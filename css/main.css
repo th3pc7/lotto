@@ -1,0 +1,69 @@
+html, body{
+    position:relative;
+    background-color:#FFF;
+    width:100%;
+}
+.mainContent{
+    width:1100px;
+    position:relative;
+    margin:auto;
+}
+
+table{
+    border-collapse:collapse;
+}
+
+table,th,td{
+    border:1px solid black;
+}
+
+td{
+    padding:0px 4px;
+}
+
+#head-span-group { }
+
+.head-span {
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+}
+
+#row-buy-group { }
+
+.tb-row { }
+
+.tb-input {
+    display: inline-block;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    outline: none;
+    text-align: center;
+}
+
+.tb-input.show_sum{
+    background-color:rgba(0,0,0,0);
+    border-color:rgba(0,0,0,0);
+}
+
+.tb-input:disabled {
+    background-color: #eee;
+}
+
+.tb-set-width {
+    margin: 1px;
+}
+
+#tb-btn-group {
+    display: inline-block;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+#tb-btn-group > button {
+    margin-left: 3px;
+}
+
+#note-bill {
+    display: inline-block;
+}
