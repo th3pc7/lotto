@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<script> var useScript = ""; </script>
+<script> var useScript = "login"; </script>
 
 <!--
 <input class="input-user" id="input-user" type="text">
@@ -13,13 +13,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="container">
     <section id="content">
-        <form id="form-login-grand" action="<?php echo base_url(); ?>login" method="post">
+        <form id="form-login-grand" action="">
             <h1>Login To Bet</h1>
             <div>
-                <input type="text" placeholder="Username" required="" id="username" name="user" autofocus autocomplete="off"/>
+                <input type="text" placeholder="Username" required="" id="username" autofocus autocomplete="off"/>
             </div>
             <div>
-                <input type="password" placeholder="Password" required="" id="password" name="pass" />
+                <input type="password" placeholder="Password" required="" id="password" />
             </div>
             <div>
                 <input class="btn-login" type="submit" value="Log in" />

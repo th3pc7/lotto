@@ -64,7 +64,7 @@ function MainProgramBuyLotto(main_config) {
     var me = this;
     this.form = new FormBuyLotto(me, main_config.config_form_buy_lotto);
     this.sendDataToServer = function (bill_data) {
-        if (bill_data.data.length == 0) {
+        if (bill_data.data.length === 0) {
             alert("ไม่พบข้อมูลที่จะซื้อ");
             return;
         }
@@ -78,7 +78,7 @@ function MainProgramBuyLotto(main_config) {
         str = encodeURIComponent(bill_data.note) + str;
         me.form.disabledBTN();
         $.post(main_config.sender.url_server, {Action: "buy_lotto", data: str}, function (data) {
-            if (data == "pass") {
+            if (data === "pass") {
                 alert("ทำรายการสำเร็จ");
                 me.form.clear();
                 me.form.enableBTN();
@@ -134,14 +134,14 @@ function FormBuyLotto(main, config) {
                         }
                         switch (ii) {
                             case 1:
-                                if (lottoNumberLength == 1) {
+                                if (lottoNumberLength === 1) {
                                     data.push({
                                         lottoNumber: lottoNumber,
                                         price: price,
                                         type: 7
                                     });
                                 }
-                                else if (lottoNumberLength == 2) {
+                                else if (lottoNumberLength === 2) {
                                     data.push({
                                         lottoNumber: lottoNumber,
                                         price: price,
@@ -157,7 +157,7 @@ function FormBuyLotto(main, config) {
                                 }
                                 break;
                             case 2:
-                                if (lottoNumberLength == 2) {
+                                if (lottoNumberLength === 2) {
                                     data.push({
                                         lottoNumber: lottoNumber,
                                         price: price,
@@ -173,14 +173,14 @@ function FormBuyLotto(main, config) {
                                 }
                                 break;
                             case 3:
-                                if (lottoNumberLength == 1) {
+                                if (lottoNumberLength === 1) {
                                     data.push({
                                         lottoNumber: lottoNumber,
                                         price: price,
                                         type: 8
                                     });
                                 }
-                                else if (lottoNumberLength == 2) {
+                                else if (lottoNumberLength === 2) {
                                     data.push({
                                         lottoNumber: lottoNumber,
                                         price: price,
@@ -196,7 +196,7 @@ function FormBuyLotto(main, config) {
                                 }
                                 break;
                             case 4:
-                                if (lottoNumberLength == 2) {
+                                if (lottoNumberLength === 2) {
                                     data.push({
                                         lottoNumber: lottoNumber[0] + lottoNumber[1],
                                         price: price,
@@ -212,7 +212,7 @@ function FormBuyLotto(main, config) {
                                 }
                                 else {
                                     var checkSome = checkSomeNumber(lottoNumber);
-                                    if (checkSome == false) {
+                                    if (checkSome === false) {
                                         data.push({
                                             lottoNumber: lottoNumber[0] + lottoNumber[1] + lottoNumber[2],
                                             price: price,
@@ -244,7 +244,7 @@ function FormBuyLotto(main, config) {
                                             type: 1
                                         });
                                     }
-                                    else if (checkSome.length == 2) {
+                                    else if (checkSome.length === 2) {
                                         data.push({
                                             lottoNumber: checkSome[0] + checkSome[1] + checkSome[1],
                                             price: price,
@@ -271,7 +271,7 @@ function FormBuyLotto(main, config) {
                                 }
                                 break;
                             case 5:
-                                if (lottoNumberLength == 2) {
+                                if (lottoNumberLength === 2) {
                                     data.push({
                                         lottoNumber: lottoNumber[0] + lottoNumber[1],
                                         price: price,
@@ -287,7 +287,7 @@ function FormBuyLotto(main, config) {
                                 }
                                 else {
                                     var checkSome = checkSomeNumber(lottoNumber);
-                                    if (checkSome == false) {
+                                    if (checkSome === false) {
                                         data.push({
                                             lottoNumber: lottoNumber[0] + lottoNumber[1] + lottoNumber[2],
                                             price: price,
@@ -319,7 +319,7 @@ function FormBuyLotto(main, config) {
                                             type: 2
                                         });
                                     }
-                                    else if (checkSome.length == 2) {
+                                    else if (checkSome.length === 2) {
                                         data.push({
                                             lottoNumber: checkSome[0] + checkSome[1] + checkSome[1],
                                             price: price,
@@ -359,16 +359,16 @@ function FormBuyLotto(main, config) {
 
     function checkSomeNumber(lottoNumber) {
         var ret = false;
-        if (lottoNumber[0] == lottoNumber[1] && lottoNumber[0] == lottoNumber[2]) {
+        if (lottoNumber[0] === lottoNumber[1] && lottoNumber[0] === lottoNumber[2]) {
             ret = lottoNumber[0];
         }
-        else if (lottoNumber[0] == lottoNumber[1]) {
+        else if (lottoNumber[0] === lottoNumber[1]) {
             ret = lottoNumber[2] + lottoNumber[0];
         }
-        else if (lottoNumber[0] == lottoNumber[2]) {
+        else if (lottoNumber[0] === lottoNumber[2]) {
             ret = lottoNumber[1] + lottoNumber[0];
         }
-        else if (lottoNumber[1] == lottoNumber[2]) {
+        else if (lottoNumber[1] === lottoNumber[2]) {
             ret = lottoNumber[0] + lottoNumber[1];
         }
         return ret;
@@ -393,7 +393,7 @@ function FormBuyLotto(main, config) {
     }
 
     function focusNextRow(nowRowNumber) {
-        if (nowRowNumber + 1 == me.rows.length) {
+        if (nowRowNumber + 1 === me.rows.length) {
             addRowBuyLotto();
             me.setUI();
         }
@@ -423,7 +423,7 @@ function FormBuyLotto(main, config) {
         me.elm.onkeyup = function (events) {
             var rowNumber = events.target.parentElement.id.replace(config.prefix_row_id, "");
             var inputNumber = events.target.classList[2].replace(config.prefix_input_class, "");
-            if (events.keyCode == 13) {
+            if (events.keyCode === 13) {
                 focusNextRow(parseInt(rowNumber));
             }
         }
@@ -523,7 +523,7 @@ function RowBuyLotto(main, config, numbers) {
                 sum += now * multi;
             }
         }
-        if (sum == 0) {
+        if (sum === 0) {
             if (me.inputs[0].elm.value !== "") {
                 me.inputs[config.field_sum_row].elm.innerHTML = "ไม่ได้ใส่ราคา";
             }
@@ -560,7 +560,7 @@ function RowBuyLotto(main, config, numbers) {
 
     function setBackgroundColor() {
         var typeLength = me.inputs[0].elm.value.length;
-        if (typeLength == 0) {
+        if (typeLength === 0) {
             me.elm.style.backgroundColor = "";
         }
         else {
@@ -584,7 +584,7 @@ function RowBuyLotto(main, config, numbers) {
                     if (config.fields_read_only.indexOf(i) !== -1) {
                         continue;
                     }
-                    if (config.numLengthAndDisabledField["" + me.inputs[0].elm.value.length].indexOf(i) == -1) {
+                    if (config.numLengthAndDisabledField["" + me.inputs[0].elm.value.length].indexOf(i) === -1) {
                         me.inputs[i].elm.value = "";
                         me.inputs[i].elm.disabled = true;
                     } else {
@@ -613,13 +613,11 @@ function RowBuyLotto(main, config, numbers) {
     init(config, numbers);
 }
 
-function InputBuyLotto(main, config, row_numbers, numbers, read_only) {
-    if(typeof read_only == "undefined"){ var read_only = false; }
+function InputBuyLotto(main, config, row_numbers, numbers, read_only=false) {
     var me = this;
     this.elm = null;
 
-    function checkRowInput(setInput) {
-        if(typeof setInput == "undefined"){ var setInput = true; }
+    function checkRowInput(setInput=true) {
         if (setInput) {
             setInputLottoNumber();
         }
@@ -650,16 +648,16 @@ function InputBuyLotto(main, config, row_numbers, numbers, read_only) {
     }
 
     function init(config) {
-        if (numbers == 0) {
+        if (numbers === 0) {
             $("#" + config.prefix_row_id + row_numbers).append('<input class="tb-input tb-set-width ' + config.prefix_input_class + numbers + '" type="text">');
             me.elm = document.getElementById(config.prefix_row_id + row_numbers).getElementsByClassName(config.prefix_input_class + numbers)[0];
             me.elm.onkeyup = checkRowInput;
             me.elm.onchange = sumRowPrice;
         }
-        else if (numbers == config.field_sum_row) {
+        else if (numbers === config.field_sum_row) {
             $("#" + config.prefix_row_id + row_numbers).append('<div class="tb-input tb-set-width ' + config.prefix_input_class + numbers + '" type="number" step="' + config.input_step + '" min="0"></div>');
             me.elm = document.getElementById(config.prefix_row_id + row_numbers).getElementsByClassName(config.prefix_input_class + numbers)[0];
-            if (read_only == true) {
+            if (read_only === true) {
                 me.elm.type = "text";
                 me.elm.className += " show_sum";
                 me.elm.style.textAlign = "right";

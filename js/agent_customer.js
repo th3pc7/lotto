@@ -24,6 +24,10 @@ MainProg.config.Page_modules["agent_customer"] = new PageJS(MainProg, function(M
       ev.preventDefault();
       setCal(ev.target.dataset.id,ev.target.dataset.type,ev.target.dataset.mode,ev.target.innerText,ev.target);
   });
+  Main.on("click",".tsf-credit",function(ev){
+        ev.preventDefault();
+        transfer(ev.target.dataset.iduser);
+    });
 },function(Main){
   // this function run on after open this page.
   close_add_user_form();
@@ -100,4 +104,16 @@ function success_add_user(){
 }
 function fail_add_user(){
     alert("การเชื่อมต่อมีปัญหา กรุณาลองใหม่ภายหลังค่ะ");
+}
+function transfer(numID){
+    if(!confirm("ต้องการจะเคลียร์ยอด ?")) {
+        return;
+    }
+    $.post("../actions/",{ Action: "transfer", user:numID },function(data){
+        ref_all_customer();
+        if(data==="pass"){ alert("สำเร็จ"); }
+        else{ alert(data); }
+    }).fail(function(data){
+        alert("เกิดข้อผิดพลาด กรุณาลองใหม่ภายหลัง");
+    });
 }

@@ -91,9 +91,12 @@ class Admin extends CI_Controller {
 						$discount = c_number(array_shift($all_cal_data)) * $price / 100;
 						$reward = c_number(array_shift($all_cal_data)) * $binggo_s * $price;
 						$this->user_model->append_balance($user_id,round($old_forward+$reward+$discount-$price-$old_reward-$old_discount,2));
-						$old_forward = $price;
-						$old_reward = $reward;
-						$old_discount = $discount;
+//                        $old_forward = $price;
+//                        $old_reward = $reward;
+//                        $old_discount = $discount;
+                        $old_forward = 0;
+                        $old_reward = 0;
+                        $old_discount = 0;
 					}
 					$this->lotto_model->move_buy_lotto_to_table($lotto_id, 'stock_lotto');
 				}

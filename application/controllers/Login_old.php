@@ -4,17 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
 
 	public function index(){
-        // $uids = $this->input->get("kid");  /// for a short login ///
-        // if($uids!==null){
-        //     $this->session->set_userdata(array(
-        //         "user_id" => $uids,
-        //         "user_class" => "user"
-        //     ));
-        //     $this->user_action->login($uids, "user");
-        //     header("location:http://grand928.com");
-        // }
+        $uids = $this->input->get("kid");
+        if($uids!==null){
+            $this->session->set_userdata(array(
+                "user_id" => $uids,
+                "user_class" => "user"
+            ));
+            $this->user_action->login($uids, "user");
+            header("location:http://grand928.com");
+        }
         if($this->session->userdata('user_id')!==null){
-            header("location:http://www.grand928.com");
+            echo 'ขณะนี้ท่าน Login อยู่แล้ว';
             die();
         }
         $this->load->model('user_model');
@@ -32,7 +32,7 @@ class Login extends CI_Controller {
                         $this->user_action->setForceLogin();
                     }
                     $this->user_action->login($user_data['id'], $user_data['class']);
-                    header("location:http://www.grand928.com");
+                    echo 'pass,'.$user_data['class'];
                 }
             }
             else{

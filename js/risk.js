@@ -32,16 +32,19 @@ function update_table_risk(data){
     $("#tb-risk-sc").html("");
     for(lotto_type in data){
         var counts = 0;
-        $("#tb-risk").append(getTypeName(lotto_type)+"<br>");
+        $("#tb-risk").append(getTypeName(lotto_type)+" - <div id='tt"+lotto_type+"'></div>");
         $("#tb-risk-sc").append(getTypeName(lotto_type)+"<br>");
+        var type_sums = 0;
         for(numbers in data[lotto_type]){
             var lotto_obj = data[lotto_type][numbers];
-            lotto_obj.price = lotto_obj.price.formatMoney(2,".",",");
+            type_sums += lotto_obj.price;
+            // lotto_obj.price = lotto_obj.price.formatMoney(2,".",",");
             $("#tb-risk").append(lotto_obj.numbers+" - ฿ "+lotto_obj.price+"<br>");
             var sc = lotto_obj.price - set_limit;
-            sc = sc.formatMoney(2,".",",");
+            // sc = sc.formatMoney(2,".",",");
             if(sc > 0){ $("#tb-risk-sc").append(lotto_obj.numbers+" - ฿ "+sc+"<br>"); counts++; }
         }
+        $("#tt"+lotto_type).html("<b>รวม "+type_sums.formatMoney(2,".",",")+"</b>");
         if(counts===0){ $("#tb-risk-sc").append("-- ไม่มี --<br>"); }
         $("#tb-risk").append("<br>");
         $("#tb-risk-sc").append("<br>");

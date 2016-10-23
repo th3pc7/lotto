@@ -198,6 +198,13 @@ class User_model extends CI_Model{
                 ));
         }
 
+        public function set_transfer($id){
+            $this->db->where('id', $id)
+                ->update('sys_user',array(
+                    'balance' => 0
+                ));
+        }
+
         public function load_discount_reward($customer_id, $lotto_type){
             return $this->db->select('discount,reward')
                 ->where('user_id', $customer_id)

@@ -55,6 +55,10 @@ class Agent extends CI_Controller {
 			case 'setCal':
 				$this->setCal();
 				break;
+            case 'transfer':
+                $this->transfer();
+                echo 'pass';
+                break;
 			default:
 				die();
 		}
@@ -138,6 +142,12 @@ class Agent extends CI_Controller {
 		$this->user_model->update_setting_cal_user($this->input->post('user'), $this->input->post('type'), $field, c_number($this->input->post('value')));
 		echo 'pass';
 	}
+
+	private function transfer(){
+        $this->load->model('user_model');
+        $customer_id = $this->input->post('user');
+        $this->user_model->set_transfer($customer_id);
+    }
 
 	private function load_all_customer_setting(){
 		$ret = array();

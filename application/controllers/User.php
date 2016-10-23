@@ -122,8 +122,8 @@ class User extends CI_Controller {
 	private function get_credit_haved($user_id){
 		$betting = $this->user_model->get_user_betting($user_id);
 		$user_data = $this->user_model->get_credit_and_balance($user_id);
-		// return floatval($user_data->credit) + floatval($user_data->balance) - floatval($betting);
-		return floatval($user_data->credit) - floatval($betting);
+        return floatval($user_data->credit) + floatval($user_data->balance) - floatval($betting);
+//		return floatval($user_data->credit) - floatval($betting);
 	}
 
 	private function forward_lotto($binggo_id, $bill_id, $numbers, $type, $price, $user_map, $datetime){

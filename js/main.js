@@ -164,7 +164,7 @@ Number.prototype.formatMoney = function (c, d, t) {
 var Modules = [];
 var config = {
     enable_log : false,
-    base_url : "http://localhost/lotto/",
+    base_url : "http://www.grand928.com/",
     id_paste_cs_load : "body",
     class_link_custom_load : "csLoad",
     Page_modules : Modules

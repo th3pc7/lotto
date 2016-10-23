@@ -9,11 +9,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <td>ประเภท</td>
             <td>เปอร์เซ็น</td>
             <td>เครดิต</td>
-            <td>ยอดได้เสีย</td>
+            <td>ยอดคงค้าง</td>
             <td>ยอดเครดิตพนัน</td>
             <!-- <td>เครดิตคงเหลือ</td> -->
             <td>เข้าระบบล่าสุด</td>
             <td>วันที่สมัคร</td>
+            <td>Transfer</td>
         </tr>
     </thead>
     <tbody>
@@ -46,6 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- <td><?php echo number_format(floatval($customer['credit'])+floatval($customer['balance'])-floatval($customer['betting']),2,'.',','); ?></td> -->
             <td class="text-right"><?php echo ($customer['last_login']!==null) ? $customer['last_login'] : 'ยังไม่เคย Login'; ?></td>
             <td class="text-right"><?php echo $customer['datetime']; ?></td>
+            <td><button class="tsf-credit" data-iduser="<?php echo $customer['id']; ?>" style="line-height:10px;">transfer</button></td>
         </tr>
         <?php endforeach; ?>
 

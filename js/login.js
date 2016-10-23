@@ -1,10 +1,10 @@
 MainProg.config.Page_modules["login"] = new PageJS(MainProg, function(Main){
   // this function run first time on load this file success.
-  Main.on("click",".btn-login",function(){
-    $.post("login",{user:$("#input-user").val(), pass:$("#input-pass").val()},function(data){
+  Main.on("submit","#form-login-grand",function(){
+    $.post("login",{user:$("#username").val(), pass:$("#password").val()},function(data){
       if(data[0]==="p"&&data[1]==="a"&&data[2]==="s"&&data[3]==="s"&&data[4]===","){
         data = data.split(",");
-        window.location.href = data[1] + "/";
+        window.location.reload();
       }
       else{ alert(data); }
     });
